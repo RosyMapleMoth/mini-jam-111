@@ -24,9 +24,11 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         // grab raw input
         moveForward = Input.GetAxis("Vertical") * speed;
         moveSide = Input.GetAxis("Horizontal") * speed;
+
 
         // move 
         rig.velocity = (transform.forward * moveForward) + (transform.right * moveSide) + (transform.up * rig.velocity.y);

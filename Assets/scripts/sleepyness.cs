@@ -1,37 +1,51 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class sleepyness : MonoBehaviour
 {
-    public enum SleepyStates {Blink, NarrowedVision, Yawn, Swaying, blurriness, hallucinations}
+    public enum SleepyStates {Blinking, NarrowedVision, Yawn, Swaying, blurriness, hallucinations}
+    public GameObject TextPrefab;
+    public GameObject DebugDebuffs;
+    Color nonBlink;
+
+    public Prompt prompter;
 
     public SpriteRenderer SleepRenderer;
     private List<SleepyStates> effects;
+    private List<SleepyStates> effectsToBeAdded;
     private List<SleepyStates> effectsToBeRemoved;
-
     private List<SleepyStates> avilable;
-
     public int sleepyModifer = 0;
-
     public float timeSinceLastSleepynessCheck = 0f;
-
     public int chanceOfgettingADebug = 90;
     private float sleepynessCheckFrequency = 1f;
+    private float blinkTimer = 0f;
+    private bool blinkingCurrently = false;
+    private Coroutine blinkfunc;
+
+
+
+
+
+
 
     // Start is called before the first frame update
     void Awake()
     {
         effects = new List<SleepyStates>();
         avilable = new List<SleepyStates>();
+        effectsToBeAdded = new List<SleepyStates>();
         effectsToBeRemoved = new List<SleepyStates>();
-        avilable.Add(SleepyStates.Blink);
-        avilable.Add(SleepyStates.NarrowedVision);
-        avilable.Add(SleepyStates.Yawn);
-        avilable.Add(SleepyStates.Swaying);
-        avilable.Add(SleepyStates.blurriness);
-        avilable.Add(SleepyStates.hallucinations);
+        avilable.Add(SleepyStates.Blinking);
+        //avilable.Add(SleepyStates.NarrowedVision);
+        //avilable.Add(SleepyStates.Yawn);
+        //avilable.Add(SleepyStates.Swaying);
+        //avilable.Add(SleepyStates.blurriness);
+        //avilable.Add(SleepyStates.hallucinations);
     }
 
     // Update is called once per frame
@@ -57,26 +71,71 @@ public class sleepyness : MonoBehaviour
                     
                     int selectRoll = UnityEngine.Random.Range(0, avilable.Count);
                     Debug.Log("Sleepyness : Adding " + avilable[selectRoll]);
-                    effects.Add(avilable[selectRoll]);
-                    avilable.RemoveAt(selectRoll);
+                    AddState(avilable[selectRoll]);
                 }
                 else
                 {
                     Debug.Log("Sleepyness : No valid debuffs");
                 }
             }
-            timeSinceLastSleepynessCheck = 0;
+            timeSinceLastSleepynessCheck = 0f;
         }
     }
 
+    private void ApplyPrompt(SleepyStates sleepyStates)
+    {
+        Debug.Log("Applying : " + sleepyStates);
+        switch (sleepyStates)
+        {
+            case SleepyStates.Blinking: 
+                break;
+            case SleepyStates.blurriness:
+                // not implamented 
+                break;
+            case SleepyStates.hallucinations:
+                // not implamented 
+                break;
+            case SleepyStates.NarrowedVision:
+                // not implamented 
+                break;
+            case SleepyStates.Swaying:
+                // not implamented 
+                break;
+            case SleepyStates.Yawn:
+                // not implamented 
+                break;
+            default:
+                break;
+        }
+    }
 
     public void LateUpdate()
     {
         foreach (SleepyStates i in effectsToBeRemoved)
         {
-            effects.Remove(i);
-            avilable.Add(i);
+            removeState(i);
         }
+        effectsToBeRemoved.Clear();
+
+        foreach (SleepyStates j in effectsToBeAdded)
+        {
+            AddState(j);
+        }
+        effectsToBeAdded.Clear();
+
+        for (int i = 0; i < DebugDebuffs.transform.childCount; i++) 
+        {
+            if (effects.Count > i)
+            {
+                DebugDebuffs.transform.GetChild(i).gameObject.SetActive(true);
+                DebugDebuffs.transform.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(effects[i].ToString());
+            }
+            else
+            {
+                DebugDebuffs.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+    
     }
 
     private void ApplyEffect(SleepyStates sleepyStates)
@@ -84,9 +143,17 @@ public class sleepyness : MonoBehaviour
         Debug.Log("Applying : " + sleepyStates);
         switch (sleepyStates)
         {
-            case SleepyStates.Blink:
-                blink();
-                RequestRemoveSleepState(SleepyStates.Blink);
+            case SleepyStates.Blinking:
+                if (!blinkingCurrently)
+                {
+                    blinkTimer += Time.deltaTime;
+                    if (blinkTimer > 3f)
+                    {
+                        blink();
+                        blinkTimer = 0f;
+                        blinkingCurrently = true;
+                    }
+                } 
                 break;
             case SleepyStates.blurriness:
                 // not implamented 
@@ -138,16 +205,17 @@ public class sleepyness : MonoBehaviour
             duration -= Time.deltaTime;
             yield return null;
         }
-        me.avilable.Add(SleepyStates.Blink);
+        me.blinkingCurrently = false;
         renderer.color = colorNow;
     }
 
 
     public void blink()
     {
-        StartCoroutine(FlashSprite(SleepRenderer, 0f, 1f,1.5f,3,this));
+        nonBlink = SleepRenderer.color;
+        Debug.Log("Starting corutine");
+        blinkfunc = StartCoroutine(FlashSprite(SleepRenderer, 0f, 1f,1.5f,3f,this));
     }
-
 
     /// <summary>
     /// Removes the current state at the end of current frame in lateUpdate
@@ -155,18 +223,90 @@ public class sleepyness : MonoBehaviour
     /// <param name="toBeRemoved"></param>
     public void RequestRemoveSleepState(SleepyStates toBeRemoved)
     {
-        if (! effectsToBeRemoved.Contains(toBeRemoved))
+        if (!effectsToBeRemoved.Contains(toBeRemoved))
         {
             effectsToBeRemoved.Add(toBeRemoved);
         }
     }
 
-    public List<SleepyStates> getCurrentSleepDebuffs()
+    public void RequestAddSleepState(SleepyStates toBeAdded)
     {
-        return effects;
+        if (!effectsToBeAdded.Contains(toBeAdded))
+        {
+            effectsToBeAdded.Add(toBeAdded);
+        }
+    }
+
+
+    private void removeState(SleepyStates state)
+    {
+        prompter.RequestToDisablePrompt(state);
+        effects.Remove(state);
+        avilable.Add(state);
+        switch (state)
+        {
+            case SleepyStates.Blinking: 
+                Debug.Log("stopping corutine");
+                StopCoroutine(blinkfunc);
+                SleepRenderer.color = nonBlink;
+                break;
+            case SleepyStates.blurriness:
+                // not implamented 
+                break;
+            case SleepyStates.hallucinations:
+                // not implamented 
+                break;
+            case SleepyStates.NarrowedVision:
+                // not implamented 
+                break;
+            case SleepyStates.Swaying:
+                // not implamented 
+                break;
+            case SleepyStates.Yawn:
+                // not implamented 
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    private void AddState(SleepyStates state)
+    {
+        effects.Add(state);
+        prompter.RequestToEnablePrompt(state);
+        avilable.Remove(state);
+        switch (state)
+        {
+            case SleepyStates.Blinking: 
+                blink();
+                blinkTimer = 0f;
+                blinkingCurrently = true;
+                break;
+            case SleepyStates.blurriness:
+                // not implamented 
+                break;
+            case SleepyStates.hallucinations:
+                // not implamented 
+                break;
+            case SleepyStates.NarrowedVision:
+                // not implamented 
+                break;
+            case SleepyStates.Swaying:
+                // not implamented 
+                break;
+            case SleepyStates.Yawn:
+                // not implamented 
+                break;
+            default:
+                break;
+        }
     }
 
 
 
-
+    public List<SleepyStates> getCurrentSleepDebuffs()
+    {
+        return effects;
+    }
 }
