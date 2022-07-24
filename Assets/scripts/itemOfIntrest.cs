@@ -5,7 +5,6 @@ using TMPro;
 
 public class itemOfIntrest : MonoBehaviour
 {
- 
 
 
     Vector3 lastcamPos;
@@ -14,11 +13,6 @@ public class itemOfIntrest : MonoBehaviour
     public string TextToDisplay;
 
     public bool CloseToPlayer;
-
-    
-
-
-
 
 
     // Start is called before the first frame update
