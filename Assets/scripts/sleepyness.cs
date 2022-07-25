@@ -123,7 +123,7 @@ public class sleepyness : MonoBehaviour
         }
         effectsToBeAdded.Clear();
 
-        for (int i = 0; i < DebugDebuffs.transform.childCount; i++) 
+        /*for (int i = 0; i < DebugDebuffs.transform.childCount; i++) 
         {
             if (effects.Count > i)
             {
@@ -134,7 +134,7 @@ public class sleepyness : MonoBehaviour
             {
                 DebugDebuffs.transform.GetChild(i).gameObject.SetActive(false);
             }
-        }
+        }*/
     
     }
 

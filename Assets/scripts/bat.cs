@@ -9,7 +9,6 @@ public class bat : MonoBehaviour
     public GameObject player;
     public GameObject batCore;
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,7 +29,6 @@ public class bat : MonoBehaviour
         }
     }
 
-
     public void Swing()
     {
         if (!myAnimationController.GetCurrentAnimatorStateInfo(0).IsName("attack"))
@@ -38,7 +36,6 @@ public class bat : MonoBehaviour
             myAnimationController.SetTrigger("attack");
         }
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -50,5 +47,4 @@ public class bat : MonoBehaviour
             other.GetComponent<Rigidbody>().useGravity = true;
         }
     } 
-    
 }
