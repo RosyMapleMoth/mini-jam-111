@@ -11,6 +11,8 @@ public class playerController : MonoBehaviour
 
     public float speed = 5f;
 
+    public Node myNode;
+
     public Rigidbody rig;
     public Transform head;
 

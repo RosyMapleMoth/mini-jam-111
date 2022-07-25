@@ -28,6 +28,7 @@ public class Prompt : MonoBehaviour
         promptsEnabled = new List<sleepyness.SleepyStates>();
         promptsToEnable = new List<sleepyness.SleepyStates>();
         promptsToDisable = new List<sleepyness.SleepyStates>();
+        mouseMoves = new Queue<float>();
     }
     
     // Start is called before the first frame update
@@ -80,7 +81,7 @@ public class Prompt : MonoBehaviour
 
     public void MouseShakeStart()
     {
-        mouseMoves = new Queue<float>();
+        mouseMoves.Clear();
         StartBlinkPrompt();
         mouseMovesSum = 0;
         mouseMoveABSSum = 0;
