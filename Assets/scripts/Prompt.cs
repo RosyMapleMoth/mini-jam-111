@@ -69,12 +69,12 @@ public class Prompt : MonoBehaviour
 
     public void StartBlinkPrompt()
     {
-        BlinkPromptText.SetText("Shake mouse to shake away sleepness");
+        //BlinkPromptText.SetText("Shake mouse to shake away sleepness");
     }
 
     public void StopBlinkPrompt()
     {
-        BlinkPromptText.SetText("GoodShake");
+        //BlinkPromptText.SetText("GoodShake");
     }
 
 

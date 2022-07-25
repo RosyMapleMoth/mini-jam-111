@@ -6,7 +6,7 @@ public class Node : MonoBehaviour
 {
     public List<Node> connectedNodes;
 
-    public FollowPlayer enemy;
+    public FollowPlayer[] enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +24,13 @@ public class Node : MonoBehaviour
     {
         if (other.CompareTag("player"))
         {
-            enemy.target = this;
-            if (!enemy.KillPlayer)
+            foreach(FollowPlayer i in enemy)
             {
-                enemy.target = this;  
-                enemy.AStar();
+                if (!i.KillPlayer)
+                {
+                    i.target = this;  
+                    i.AStar();
+                }  
             }
             other.GetComponent<playerController>().myNode = this;
         }

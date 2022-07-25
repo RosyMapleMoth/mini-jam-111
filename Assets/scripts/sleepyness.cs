@@ -21,7 +21,7 @@ public class sleepyness : MonoBehaviour
     private List<SleepyStates> avilable;
     public int sleepyModifer = 0;
     public float timeSinceLastSleepynessCheck = 0f;
-    public int chanceOfgettingADebug = 90;
+    public int chanceOfgettingADebug = 95;
     private float sleepynessCheckFrequency = 1f;
     private float blinkTimer = 0f;
     private bool blinkingCurrently = false;

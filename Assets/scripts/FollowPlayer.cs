@@ -229,11 +229,11 @@ public class FollowPlayer : MonoBehaviour
         while (Cur.parentCell != null)
         {
             pathing.Push(Cur.node.gameObject);
-            Cur.node.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            //Cur.node.gameObject.GetComponent<MeshRenderer>().enabled = true;
             Cur = Cur.parentCell;
         }
             pathing.Push(Cur.node.gameObject);
-            Cur.node.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            //Cur.node.gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
 
     public void Die()
