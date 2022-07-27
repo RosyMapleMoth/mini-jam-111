@@ -11645,9 +11645,10 @@ GameObject:
   - component: {fileID: 568039174}
   - component: {fileID: 568039178}
   - component: {fileID: 568039173}
+  - component: {fileID: 568039179}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11682,7 +11683,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568039172}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -11768,6 +11769,22 @@ MonoBehaviour:
   Player: {fileID: 2077425251}
   KillPlayer: 0
   dead: 0
+--- !u!54 &568039179
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568039172}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &574208364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19484,6 +19501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Test
       objectReference: {fileID: 0}
+    - target: {fileID: 1674596571358896427, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1674596571358896430, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -21189,6 +21210,10 @@ PrefabInstance:
     - target: {fileID: 1674596571358896427, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
       propertyPath: m_Name
       value: Enemy Test (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674596571358896427, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1674596571358896430, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
       propertyPath: m_RootOrder
@@ -28916,7 +28941,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -28928,7 +28953,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318933640}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 7, z: 1}
@@ -28956,7 +28981,6 @@ MonoBehaviour:
   myAnimationController: {fileID: 1727499220}
   player: {fileID: 2077425251}
   batCore: {fileID: 401320587}
-  hitbox: {fileID: 0}
 --- !u!43 &1326944545
 Mesh:
   m_ObjectHideFlags: 0
@@ -29645,6 +29669,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1478069951359368539, guid: 94034cc7a0cfaec489cad580eb740362, type: 3}
       propertyPath: neckhight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478069951712855589, guid: 94034cc7a0cfaec489cad580eb740362, type: 3}
+      propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1478069951712855592, guid: 94034cc7a0cfaec489cad580eb740362, type: 3}
@@ -47238,6 +47266,10 @@ PrefabInstance:
     - target: {fileID: 1674596571358896427, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
       propertyPath: m_Name
       value: Enemy Test (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674596571358896427, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1674596571358896430, guid: 024fe05bca84ed9459b560be0e01f675, type: 3}
       propertyPath: m_RootOrder

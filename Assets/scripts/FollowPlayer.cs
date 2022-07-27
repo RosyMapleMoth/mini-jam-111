@@ -114,7 +114,9 @@ public class FollowPlayer : MonoBehaviour
 
     private void GameOver()
     {
-        SceneManager.LoadScene("player Test");
+
+        
+        ///SceneManager.LoadScene("player Test");
     }
 
     public void AStar()
@@ -239,6 +241,7 @@ public class FollowPlayer : MonoBehaviour
     public void Die()
     {
         dead = true;
+        //this.gameObject.SetActive(false);
         Debug.Log("IT HAPPEND");
     }
 }

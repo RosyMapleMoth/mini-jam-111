@@ -24,19 +24,19 @@ public class Node : MonoBehaviour
     {
         if (other.CompareTag("player"))
         {
-            foreach(FollowPlayer i in enemy)
+            /* foreach(FollowPlayer i in enemy)
             {
                 if (!i.KillPlayer)
                 {
-                    i.target = this;  
-                    i.AStar();
+                    //i.target = this
+                    //i.AStar();
                 }  
-            }
+            }*/
             other.GetComponent<playerController>().myNode = this;
         }
         if (other.CompareTag("enemy"))
         {
-            other.GetComponent<FollowPlayer>().MyNode = this;
+            //other.GetComponent<FollowPlayer>().MyNode = this;
         }
     } 
 

@@ -5,19 +5,21 @@ using UnityEngine;
 public class bat : MonoBehaviour
 {
 
-    Animator myAnimationController;
+    public Animator myAnimationController;
     public GameObject player;
     public GameObject batCore;
+
+    BoxCollider hitbox;
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        myAnimationController = GetComponent<Animator>();
     }
     
     void Start()
     {
-
+        hitbox = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -27,12 +29,18 @@ public class bat : MonoBehaviour
         {
             Swing();
         }
+        if (myAnimationController.GetCurrentAnimatorStateInfo(0).IsName("base"))
+        {
+            hitbox.enabled = false  ;
+        }
     }
 
     public void Swing()
     {
-        if (!myAnimationController.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+        hitbox.enabled = true;
+        if (!myAnimationController.GetCurrentAnimatorStateInfo(0).IsName("batAttack"))
         {
+            hitbox.enabled = true;
             myAnimationController.SetTrigger("attack");
         }
     }
@@ -41,7 +49,7 @@ public class bat : MonoBehaviour
     {
         if (other.CompareTag("enemy"))
         {
-            other.GetComponent<FollowPlayer>().Die();
+            other.GetComponent<navmeshFollowPlayer>().Die();
             Vector3 test = other.transform.position - batCore.transform.position;
             other.GetComponent<Rigidbody>().AddForce(test * 500f,ForceMode.Force);
             other.GetComponent<Rigidbody>().useGravity = true;
