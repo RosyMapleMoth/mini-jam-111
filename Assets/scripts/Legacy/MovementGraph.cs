@@ -32,8 +32,8 @@ public class MovementGraph : MonoBehaviour
     {
         foreach (SubClass i in edges)
         {
-            i.edge1.GetComponent<Node>().connectedNodes.Add(i.edge2.GetComponent<Node>());
-            i.edge2.GetComponent<Node>().connectedNodes.Add(i.edge1.GetComponent<Node>());
+            //i.edge1.GetComponent<Node>().connectedNodes.Add(i.edge2.GetComponent<Node>());
+            //i.edge2.GetComponent<Node>().connectedNodes.Add(i.edge1.GetComponent<Node>());
         }
     }
 

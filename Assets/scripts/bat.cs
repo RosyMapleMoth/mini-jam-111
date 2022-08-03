@@ -5,6 +5,7 @@ using UnityEngine;
 public class bat : MonoBehaviour
 {
 
+    public Node MyNode;
     public Animator myAnimationController;
     public GameObject player;
     public GameObject batCore;
@@ -29,18 +30,12 @@ public class bat : MonoBehaviour
         {
             Swing();
         }
-        if (myAnimationController.GetCurrentAnimatorStateInfo(0).IsName("base"))
-        {
-            hitbox.enabled = false  ;
-        }
     }
 
     public void Swing()
     {
-        hitbox.enabled = true;
         if (!myAnimationController.GetCurrentAnimatorStateInfo(0).IsName("batAttack"))
         {
-            hitbox.enabled = true;
             myAnimationController.SetTrigger("attack");
         }
     }
@@ -50,8 +45,13 @@ public class bat : MonoBehaviour
         if (other.CompareTag("enemy"))
         {
             other.GetComponent<navmeshFollowPlayer>().Die();
-            Vector3 test = other.transform.position - batCore.transform.position;
-            other.GetComponent<Rigidbody>().AddForce(test * 500f,ForceMode.Force);
+            Vector3 test = batCore.transform.position - other.transform.position;
+            //other.GetComponent<Rigidbody>().AddForce(test * 500f,ForceMode.Force);
+            foreach (Rigidbody i in other.GetComponentsInChildren<Rigidbody>())
+            {
+                Vector3 ok = i.transform.position - batCore.transform.position;
+                i.GetComponent<Rigidbody>().AddForce(ok * 100f,ForceMode.Force);
+            }
             other.GetComponent<Rigidbody>().useGravity = true;
         }
     } 

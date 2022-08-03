@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class FollowPlayer : MonoBehaviour
 {
+
+    public Rigidbody[] physicsbodies; 
+    
     public GameObject Player;
 
     public MovementGraph graph;
@@ -52,6 +55,7 @@ public class FollowPlayer : MonoBehaviour
         pathing = new Stack<GameObject>();
         open = new List<Cell>();
         closed = new List<Cell>();
+        physicsbodies = transform.GetComponentsInChildren<Rigidbody>();
     }
 
     // Update is called once per frame

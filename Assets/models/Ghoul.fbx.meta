@@ -158,7 +158,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
-    optimizeBones: 1
+    optimizeBones: 0
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -182,7 +182,177 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Ghoul(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ghoul
+      parentName: Ghoul(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 0.06510477, y: 0.06510477, z: 0.06510477}
+    - name: Ghoul bones
+      parentName: Ghoul(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 0.22717905, y: 0.22717905, z: 0.22717905}
+    - name: root
+      parentName: Ghoul bones
+      position: {x: -0, y: 0, z: 1.2953513}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine 1
+      parentName: root
+      position: {x: -0, y: 0.1443032, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine 2
+      parentName: spine 1
+      position: {x: -0, y: 0.26378655, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head
+      parentName: spine 2
+      position: {x: -0, y: 0.3608402, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head_end
+      parentName: head
+      position: {x: -0, y: 1.0302608, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder.L
+      parentName: spine 2
+      position: {x: -0, y: 0.3608402, z: 0}
+      rotation: {x: 0.00000014901161, y: -0.00000011920929, z: 0.8114177, w: 0.5844668}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: UpperArm.L
+      parentName: shoulder.L
+      position: {x: -0.00000004470349, y: 0.38695028, z: -5.5067062e-14}
+      rotation: {x: -0.004364156, y: 0.0023716919, z: -0.19743703, w: 0.98030305}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: Lower Arm.L
+      parentName: UpperArm.L
+      position: {x: -0.00000011155215, y: 0.40250248, z: -3.4924597e-10}
+      rotation: {x: 0.03064261, y: 0.000010424906, z: 0.00515433, w: 0.99951714}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Hand.L
+      parentName: Lower Arm.L
+      position: {x: 0.0000001087974, y: 0.35273346, z: 0.0000000027683456}
+      rotation: {x: -0.01633313, y: -0.000079168516, z: -0.0048534754, w: 0.99985486}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Hand.L_end
+      parentName: Hand.L
+      position: {x: -0, y: 0.21361093, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: shoulder.R
+      parentName: spine 2
+      position: {x: -0, y: 0.3608402, z: 0}
+      rotation: {x: -0.00000014901161, y: -0.00000011920929, z: 0.8114177, w: -0.5844668}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: UpperArm.R
+      parentName: shoulder.R
+      position: {x: 0.00000004470349, y: 0.38695028, z: -5.5067062e-14}
+      rotation: {x: -0.004364156, y: -0.0023716919, z: 0.19743703, w: 0.98030305}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: Lower Arm.R
+      parentName: UpperArm.R
+      position: {x: 0.00000011155215, y: 0.40250248, z: -3.4924597e-10}
+      rotation: {x: 0.03064261, y: -0.000010424906, z: -0.00515433, w: 0.99951714}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Hand.R
+      parentName: Lower Arm.R
+      position: {x: -0.0000001087974, y: 0.35273346, z: 0.0000000027683456}
+      rotation: {x: -0.01633313, y: 0.000079168516, z: 0.0048534754, w: 0.99985486}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: Hand.R_end
+      parentName: Hand.R
+      position: {x: -0, y: 0.21361093, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLeg.L
+      parentName: root
+      position: {x: -0.18913004, y: 0.0771451, z: -0.020737944}
+      rotation: {x: -0.0015237209, y: 0.023254702, z: 0.99972665, w: 0.0018966895}
+      scale: {x: 1, y: 1.0000002, z: 1.0000038}
+    - name: LowerLeg.L
+      parentName: UpperLeg.L
+      position: {x: 0.00000001533408, y: 0.660185, z: -0.000000005529728}
+      rotation: {x: -0.031764597, y: 0.000028048038, z: 0.001886977, w: 0.9994936}
+      scale: {x: 0.9999998, y: 1.0000004, z: 0.99999994}
+    - name: Foot.L
+      parentName: LowerLeg.L
+      position: {x: 0.000000002143342, y: 0.5848946, z: -1.330136e-10}
+      rotation: {x: -0.00082535134, y: 0.83191, z: 0.5549084, w: 0.0013330854}
+      scale: {x: 1, y: 1.0000015, z: 1}
+    - name: Foot.L_end
+      parentName: Foot.L
+      position: {x: -0, y: 0.25007853, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLeg.R
+      parentName: root
+      position: {x: 0.18913004, y: 0.0771451, z: -0.020737944}
+      rotation: {x: 0.0015237051, y: 0.023254702, z: 0.99972665, w: -0.0018966892}
+      scale: {x: 1, y: 1.0000002, z: 1.0000038}
+    - name: LowerLeg.R
+      parentName: UpperLeg.R
+      position: {x: -0.000000016116246, y: 0.660185, z: -0.000000007858034}
+      rotation: {x: -0.031764597, y: -0.000028047965, z: -0.001886977, w: 0.9994936}
+      scale: {x: 0.9999998, y: 1.0000004, z: 0.99999994}
+    - name: Foot.R
+      parentName: LowerLeg.R
+      position: {x: -0.0000000022115454, y: 0.5848946, z: -1.9122126e-10}
+      rotation: {x: 0.00082527794, y: 0.83191, z: 0.5549084, w: -0.0013329743}
+      scale: {x: 1, y: 1.0000015, z: 1}
+    - name: Foot.R_end
+      parentName: Foot.R
+      position: {x: -0, y: 0.25007853, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKLegPole.L
+      parentName: Ghoul bones
+      position: {x: -0.19161859, y: -0.38665375, z: 0.73367095}
+      rotation: {x: 0.0018868435, y: 1.1553584e-19, z: 0.9999982, w: -6.123223e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKLegPole.L_end
+      parentName: IKLegPole.L
+      position: {x: -0, y: 0.3405777, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.L
+      parentName: Ghoul bones
+      position: {x: -0.19161859, y: 0.00000011334773, z: 0.1282199}
+      rotation: {x: 6.123233e-17, y: 1, z: -6.123233e-17, w: -0.00000013315805}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.L_end
+      parentName: IKTarget.L
+      position: {x: -0, y: 0.30961606, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKLegPole.R
+      parentName: Ghoul bones
+      position: {x: 0.19161859, y: -0.38665375, z: 0.73367095}
+      rotation: {x: -0.0018868435, y: -1.1553584e-19, z: 0.9999982, w: -6.123223e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKLegPole.R_end
+      parentName: IKLegPole.R
+      position: {x: -0, y: 0.3405777, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.R
+      parentName: Ghoul bones
+      position: {x: 0.19161859, y: 0.00000011334773, z: 0.1282199}
+      rotation: {x: 6.123235e-17, y: 1, z: -6.123235e-17, w: 0.00000013315805}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IKTarget.R_end
+      parentName: IKTarget.R
+      position: {x: -0, y: 0.30961606, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

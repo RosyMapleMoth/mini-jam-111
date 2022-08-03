@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class navmeshFollowPlayer : MonoBehaviour
 {
+    public GameObject Bones;
 
+    public Animator myanimator;
     public NavMeshAgent ai;
     public GameObject Player;
     private float KillTimer = 0f;
@@ -55,6 +57,10 @@ public class navmeshFollowPlayer : MonoBehaviour
     public void Die()
     {
         dead = true;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<BoxCollider>().isTrigger = false;
+        myanimator.enabled = false;
+        Bones.SetActive(true);
         ai.enabled = false;
         //this.gameObject.SetActive(false);
         Debug.Log("IT HAPPEND");
