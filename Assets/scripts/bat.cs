@@ -44,8 +44,8 @@ public class bat : MonoBehaviour
     {
         if (other.CompareTag("enemy"))
         {
-            other.GetComponent<navmeshFollowPlayer>().Die();
-            Vector3 test = batCore.transform.position - other.transform.position;
+            other.transform.root.GetComponent<navmeshFollowPlayer>().Hit(batCore.transform.position,100f);
+            /*other.GetComponent<navmeshFollowPlayer>().Die();
             //other.GetComponent<Rigidbody>().AddForce(test * 500f,ForceMode.Force);
             foreach (Rigidbody i in other.GetComponentsInChildren<Rigidbody>())
             {
@@ -53,6 +53,7 @@ public class bat : MonoBehaviour
                 i.GetComponent<Rigidbody>().AddForce(ok * 100f,ForceMode.Force);
             }
             other.GetComponent<Rigidbody>().useGravity = true;
+            */
         }
     } 
 }

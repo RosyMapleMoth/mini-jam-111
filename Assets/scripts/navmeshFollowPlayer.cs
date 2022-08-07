@@ -6,7 +6,9 @@ using UnityEngine.AI;
 public class navmeshFollowPlayer : MonoBehaviour
 {
     public GameObject Bones;
+    public Rigidbody[] childbones;
 
+    public float hitTimer = 0;
     public Animator myanimator;
     public NavMeshAgent ai;
     public GameObject Player;
@@ -16,15 +18,29 @@ public class navmeshFollowPlayer : MonoBehaviour
     public bool dead = false;
     Vector3 playerLastPostition;
 
+
+
+    void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        childbones = GetComponentsInChildren<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hitTimer > 0)
+        {
+            hitTimer -= Time.deltaTime;
+            if (hitTimer < 0)
+            {
+                hitTimer = 0;
+            }
+        }
         if (dead)
         {
 
@@ -71,5 +87,22 @@ public class navmeshFollowPlayer : MonoBehaviour
 
         
         ///SceneManager.LoadScene("player Test");
+    }
+
+    public void Hit(Vector3 hitLocation, float force)
+    {
+        if (hitTimer == 0)
+        {
+            hitTimer = 2;
+            foreach (Rigidbody i in childbones)
+            {
+                Vector3 final_dir = i.transform.position - hitLocation;
+                i.GetComponent<Rigidbody>().AddForce(final_dir * force, ForceMode.Force);
+            }
+            if (!dead)
+            {
+                Die();
+            }
+        }
     }
 }
