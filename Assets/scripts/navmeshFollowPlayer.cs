@@ -18,6 +18,7 @@ public class navmeshFollowPlayer : MonoBehaviour
     public bool dead = false;
     Vector3 playerLastPostition;
 
+    enum state { Idle, Seeking, Following, Fleeing }
 
 
     void Awake()
@@ -40,10 +41,6 @@ public class navmeshFollowPlayer : MonoBehaviour
             {
                 hitTimer = 0;
             }
-        }
-        if (dead)
-        {
-
         }
         else if (KillPlayer)
         {
@@ -89,6 +86,19 @@ public class navmeshFollowPlayer : MonoBehaviour
         ///SceneManager.LoadScene("player Test");
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("player"))
+        {
+
+        }
+        else if (other.CompareTag("hiddingSpot"))
+        {
+
+        }
+    }
+
+
     public void Hit(Vector3 hitLocation, float force)
     {
         if (hitTimer == 0)
@@ -102,6 +112,7 @@ public class navmeshFollowPlayer : MonoBehaviour
             if (!dead)
             {
                 Die();
+                dead = true;
             }
         }
     }
